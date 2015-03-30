@@ -1,0 +1,40 @@
+<div flex layout="row" layout-align="center center"
+     ng-controller="AppController as appCtrl">
+
+
+    <md-whiteframe flex="66" class="md-whiteframe-z1">
+        <md-content layout="column">
+            <md-list>
+                <md-item ng-repeat="todo in appCtrl.todos">
+                    <md-item-content>
+                        <div class="md-tile-left">
+                            <md-checkbox ng-model="todo.done" aria-label="Done">
+
+                            </md-checkbox>
+                        </div>
+                        <div class="md-tile-content">
+                            <p ng-class="{done:todo.done}">
+                                {{todo.text}}
+                            </p>
+                        </div>
+                        <div class="md-tile-right">
+                            <md-button ng-click="appCtrl.deleteTodo(todo)" aria-label="Delete">
+                                <md-icon md-svg-icon="delete"></md-icon>
+                            </md-button>
+                        </div>
+                    </md-item-content>
+
+                </md-item>
+            </md-list>
+            <form ng-submit="appCtrl.addTodo()" name="newTodoForm" novalidate>
+                <md-input-container>
+                    <input ng-model="appCtrl.newTodoText" type="text" required
+                           placeholder="Buy milk">
+                    <label>New Todo</label>
+                </md-input-container>
+            </form>
+        </md-content>
+    </md-whiteframe>
+
+
+</div>
